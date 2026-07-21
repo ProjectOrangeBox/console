@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "peels\\console\\": "src/"
+            "orange\\console\\": "src/"
         }
     },
     "minimum-stability": "dev",

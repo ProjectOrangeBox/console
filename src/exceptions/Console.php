@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace peels\console\exceptions;
+namespace orange\console\exceptions;
 
 use orange\framework\exceptions\OrangeException;
 

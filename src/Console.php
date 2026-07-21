@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace peels\console;
+namespace orange\console;
 
 use Exception;
-use peels\bitwise\BitWise;
-use peels\console\ConsoleInterface;
+use orange\bitwise\BitWise;
+use orange\console\ConsoleInterface;
 use orange\framework\base\Singleton;
-use peels\console\exceptions\Console as ConsoleException;
+use orange\console\exceptions\Console as ConsoleException;
 use orange\framework\interfaces\InputInterface;
 use orange\framework\traits\ConfigurationTrait;
 

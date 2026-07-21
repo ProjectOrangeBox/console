@@ -1,7 +1,7 @@
 <?php
 
-use peels\console\Console;
-use peels\console\exceptions\Console as ConsoleException;
+use orange\console\Console;
+use orange\console\exceptions\Console as ConsoleException;
 use orange\framework\interfaces\InputInterface;
 
 final class ConsoleTest extends unitTestHelper

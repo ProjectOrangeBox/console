@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace peels\console;
+namespace orange\console;
 
 /**
  * Contract for console helpers that manage output formatting and command-line interactions.

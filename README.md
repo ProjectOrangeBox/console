@@ -1,11 +1,11 @@
 # Console
 
-CLI helper for colorized/ANSI output, verbose-level gating, argument parsing, and simple prompts — built on top of [`peels/bitwise`](../bitwise/README.md) to track which verbose levels are currently active.
+CLI helper for colorized/ANSI output, verbose-level gating, argument parsing, and simple prompts — built on top of [`orange/bitwise`](../bitwise/README.md) to track which verbose levels are currently active.
 
 ## Example
 
 ```php
-use peels\console\Console;
+use orange\console\Console;
 use orange\framework\input\Input; // any InputInterface implementation
 
 $console = Console::getInstance([], $input);
