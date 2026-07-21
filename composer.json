@@ -1,0 +1,32 @@
+{
+    "name": "orange/console",
+    "description": "CLI dispatcher utilities for command registration and execution.",
+    "type": "library",
+    "homepage": "https://github.com/ProjectOrangeBox/console",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Don Myers",
+            "email": "donmyers@me.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ProjectOrangeBox/console/issues",
+        "source": "https://github.com/ProjectOrangeBox/console"
+    },
+    "require": {
+        "php": ">=8.4",
+        "orange/framework": "dev-main",
+        "orange/bitwise": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "peels\\console\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
