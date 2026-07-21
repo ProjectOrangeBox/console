@@ -16,8 +16,8 @@
     },
     "require": {
         "php": ">=8.4",
-        "orange/framework": "dev-main",
-        "orange/bitwise": "dev-main"
+        "orange/framework": "dev-master",
+        "orange/bitwise": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^13.2"
