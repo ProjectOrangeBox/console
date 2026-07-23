@@ -153,15 +153,15 @@ class Console extends Singleton implements ConsoleInterface
      */
     public function detectVerboseLevel(?string $char = null): void
     {
-        $char = $char ?? $this->verboseChar;
+        $char ??= $this->verboseChar;
 
         foreach ($this->argv as $arg) {
             if ($arg == '-' . strtoupper($char)) {
                 $this->verboseAdd($this->defaultUpperCaseVerbose);
             } elseif ($arg == '-' . $char) {
                 $this->verboseAdd($this->defaultVerbose);
-            } elseif (substr($arg, 0, 2) == '-' . $char) {
-                $bit = trim(substr($arg, 2));
+            } elseif (substr((string) $arg, 0, 2) == '-' . $char) {
+                $bit = trim(substr((string) $arg, 2));
 
                 if ($this->verbose->hasBit($bit)) {
                     $this->verboseAdd($bit);
@@ -204,7 +204,7 @@ class Console extends Singleton implements ConsoleInterface
      */
     public function bell(int $times = 1, ?string $level = null): self
     {
-        $level = $level ?? $this->defaultLevels['bell'];
+        $level ??= $this->defaultLevels['bell'];
 
         $this->write(str_repeat($this->bell, $times), $level, \STDOUT);
 
@@ -222,7 +222,7 @@ class Console extends Singleton implements ConsoleInterface
      */
     public function line(?int $length = null, string $char = '-', ?string $level = null): self
     {
-        $level = $level ?? $this->defaultLevels['line'];
+        $level ??= $this->defaultLevels['line'];
 
         if ($length == null && $this->simulate) {
             // fixed amount in simulate mode
@@ -247,7 +247,7 @@ class Console extends Singleton implements ConsoleInterface
      */
     public function clear(?string $level = null): self
     {
-        $level = $level ?? $this->defaultLevels['clear'];
+        $level ??= $this->defaultLevels['clear'];
 
         if ($this->simulate) {
             // if simulating "clear" the output
@@ -270,7 +270,7 @@ class Console extends Singleton implements ConsoleInterface
      */
     public function linefeed(int $times = 1, ?string $level = null): self
     {
-        $level = $level ?? $this->defaultLevels['linefeed'];
+        $level ??= $this->defaultLevels['linefeed'];
 
         return $this->write(str_repeat($this->lf, $times), $level, \STDOUT);
     }
@@ -285,7 +285,7 @@ class Console extends Singleton implements ConsoleInterface
      */
     public function table(array $table, ?string $level = null): self
     {
-        $level = $level ?? $this->defaultLevels['table'];
+        $level ??= $this->defaultLevels['table'];
 
         // get max column size
         $columnsMaxWidth = [];
@@ -328,7 +328,7 @@ class Console extends Singleton implements ConsoleInterface
 
             ob_start();
 
-            call_user_func_array('printf', $row);
+            call_user_func_array(printf(...), $row);
 
             $this->$level(trim(ob_get_clean()), $level);
 
@@ -475,7 +475,7 @@ class Console extends Singleton implements ConsoleInterface
     public function minimumArguments(int $num, ?string $error = null): self
     {
         if ($this->argc < ($num + 1)) {
-            $error = $error ?? 'Please provide ' . $num . ' arguments';
+            $error ??= 'Please provide ' . $num . ' arguments';
 
             $this->error($error)->exit(1);
         }
@@ -492,16 +492,7 @@ class Console extends Singleton implements ConsoleInterface
      */
     public function getArgumentExists(string $match): bool
     {
-        $found = false;
-
-        foreach ($this->argv as $arg) {
-            if ($arg == $match) {
-                $found = true;
-
-                break;
-            }
-        }
-
+        $found = array_any($this->argv, fn($arg) => $arg == $match);
         return $found;
     }
 
